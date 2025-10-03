@@ -1,7 +1,7 @@
 let zIndexAtual = 1000;
 let contador = 0;
 
-function newWindow(titulo, ref) {
+function newWindow(titulo, ref, id) {
     contador++;
 
     const win = document.createElement('div');
@@ -39,16 +39,29 @@ function newWindow(titulo, ref) {
             `;
 
             // carrega o conteúdo do PHP
-            fetch(`app/${ref}.php`)
-                .then(r => r.text())
-                .then(html => {
-                    win.querySelector('.contents').innerHTML = html;
-                    // Reativa formulários dentro da janela
-                    attachFormHandler(win, `app/${ref}.php`);
-                })
-                .catch(() => {
-                    win.querySelector('.contents').innerHTML = `<p>Erro ao carregar o conteúdo.</p>`;
-                });
+            if (id) {
+                fetch(`app/${ref}.php?id=${id}`)
+                    .then(r => r.text())
+                    .then(html => {
+                        win.querySelector('.contents').innerHTML = html;
+                        // Reativa formulários dentro da janela
+                        attachFormHandler(win, `app/${ref}.php`);
+                    })
+                    .catch(() => {
+                        win.querySelector('.contents').innerHTML = `<p>Erro ao carregar o conteúdo.</p>`;
+                    });
+            } else {
+                fetch(`app/${ref}.php`)
+                    .then(r => r.text())
+                    .then(html => {
+                        win.querySelector('.contents').innerHTML = html;
+                        // Reativa formulários dentro da janela
+                        attachFormHandler(win, `app/${ref}.php`);
+                    })
+                    .catch(() => {
+                        win.querySelector('.contents').innerHTML = `<p>Erro ao carregar o conteúdo.</p>`;
+                    });
+            }
             break;
 
         default:

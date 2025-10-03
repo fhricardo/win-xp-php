@@ -26,3 +26,13 @@ bsod.addEventListener('click', () => {
         window.location.href = "bsod.html";
     }, 1250)
 })
+
+function cadastra() {
+    window.location.href = "signup.php";
+}
+function start() {
+    window.location.href = "index.php";
+}
+function logoff() {
+    window.location.href = "logout.php"
+}

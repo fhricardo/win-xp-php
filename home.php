@@ -1,3 +1,12 @@
+<?php
+require 'config/conn.php';
+session_start();
+if (!isset($_SESSION['usuario'])) {
+    header("Location: index.php?erro=Acesso negado");
+    exit;
+}
+$username = $_SESSION['usuario']['nome'];
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -18,7 +27,7 @@
             <div class="userProfile" id="userProfile">
                 <img src="assets/user-profile.webp" alt="">
             </div>
-            <h3>Username</h3>
+            <h3><?= $username; ?></h3>
         </div>
         <div class="mid">
             <div class="left">
@@ -34,10 +43,10 @@
             </div>
             <div class="right">
                 <!-- Cliente -->
-                <div class="r-item-bold" onclick="newWindow('Cadastrar Cliente', 'Conteúdo da primeira janela')">
+                <div class="r-item-bold" onclick="newWindow('Cadastrar Cliente', 'add_client')">
                     <img src="assets/user.ico" alt="">Cadastrar Cliente
                 </div>
-                <div class="r-item-bold" onclick="newWindow('Exibir Clientes', 'show_users')">
+                <div class="r-item-bold" onclick="newWindow('Exibir Clientes', 'show_clients')">
                     <img src="assets/users-list.ico" alt="">Exibir Clientes
                 </div>
                 <div class="hr"></div>
@@ -65,9 +74,8 @@
             </div>
         </div>
         <div class="logout">
-            <div class="logoff">
+            <div class="logoff" onclick="logoff()">
                 <button><img src="assets/ico-logoff.ico" alt="">Sair</button>
-
             </div>
             <div class="shutdown">
                 <a href="logout.html"><button><img src="assets/ico-shutdown.ico" alt="">Desligar</button></a>
@@ -104,7 +112,7 @@
         window.addEventListener("load", () => {
             let ref = document.referrer; // URL da página anterior
             // Verifica se a URL contém "pagina1.html"
-            if (ref.includes("index.html")) {
+            if (ref.includes("index.php") || ref.includes("index.php?erro=Usuário%20ou%20senha%20incorretos")) {
                 let audio = new Audio("assets/audio/win-xp-startup.mp3");
                 audio.play()
                     .then(() => console.log("Som tocando!"))

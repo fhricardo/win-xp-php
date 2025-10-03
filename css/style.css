@@ -605,7 +605,7 @@ footer {
 }
 
 .contents-cmd {
-    min-width: 500;
+    min-width: 500px;
     min-height: 300px;
     background-color: var(--deep-black);
     padding: 10px;
@@ -618,4 +618,78 @@ footer {
 .inactive .contents-cmd {
     background-color: var(--black);
     color: var(--light-gray);
+}
+
+form {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-direction: column;
+
+    div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 4px;
+    }
+
+    label {
+        min-width: 80px;
+        text-align: right;
+    }
+
+    input {
+        height: 20px;
+        border: 1px solid var(--dark-blue-gray);
+        outline: var(--dark-blue-gray);
+        background-color: var(--white);
+        font-size: 11px;
+        padding: 0 4px;
+    }
+
+    button {
+        min-width: 72px;
+        padding: 0 4px;
+        height: 20px;
+        font-size: 11px;
+    }
+}
+
+.xp-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.xp-table th,
+.xp-table td {
+    border: 1px solid #999;
+    padding: 6px 8px;
+    text-align: left;
+}
+
+.xp-table th {
+    background-color: #d4d0c8;
+    color: #000;
+    font-weight: bold;
+}
+
+.xp-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.xp-btn-edit {
+    background-color: #ece9d8;
+    border: 1px solid #888;
+    border-radius: 4px;
+    min-width: 72px;
+    padding: 0 4px;
+    height: 20px;
+    font-size: 11px;
+}
+
+.xp-btn-edit:hover {
+    background-color: #d4d0c8;
 }

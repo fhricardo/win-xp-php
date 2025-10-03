@@ -1,7 +1,7 @@
 let zIndexAtual = 1000;
 let contador = 0;
 
-function newWindow(titulo, ref) {
+function newWindow(titulo, ref, id) {
     contador++;
 
     const win = document.createElement('div');

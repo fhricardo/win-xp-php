@@ -18,8 +18,8 @@ shutdown.addEventListener('click', () => {
     }, 6000)
 })
 cancel.addEventListener('click', () => {
-    window.location.href = 'home.html'
+    window.location.href = 'home.php'
 })
 logoff.addEventListener('click', () => {
-    window.location.href = 'index.html'
+    window.location.href = 'logout.php'
 })
