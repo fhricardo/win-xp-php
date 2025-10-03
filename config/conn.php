@@ -2,7 +2,7 @@
 // Conexão com o banco de dados
 $server = "localhost:3306";
 $user = "root";
-$password = "Psd@1801#Fhr@1701";
+$password = "";
 $database = "ecommerce";
 
 try {
